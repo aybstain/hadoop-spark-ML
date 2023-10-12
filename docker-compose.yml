@@ -1,0 +1,15 @@
+services:
+  hadoop:
+    build:
+      context: ./hadoop
+    container_name: hadoop-container
+    ports:
+      - 9870:9870
+    volumes:
+      - ./data:/data
+
+  pyspark:
+    build:
+      context: ./pyspark
+    depends_on:
+      - hadoop
